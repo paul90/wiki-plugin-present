@@ -22,7 +22,7 @@ const startServer = params => {
   }
 
   const isWiki = entry => {
-    const sitemapPath = path.join(entry.path, entry.name, 'status', 'sitemap.json')
+    const sitemapPath = path.join(entry.parentPath, entry.name, 'status', 'sitemap.json')
 
     return new Promise(resolve => {
       fs.access(sitemapPath, fs.constants.R_OK)
@@ -36,7 +36,7 @@ const startServer = params => {
   }
 
   const wikiPages = async entry => {
-    const pagesPath = path.join(entry.path, entry.name, 'pages')
+    const pagesPath = path.join(entry.parentPath, entry.name, 'pages')
 
     return new Promise(resolve => {
       fs.readdir(pagesPath)
